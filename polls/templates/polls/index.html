@@ -1,0 +1,48 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Poll</title>
+
+    <script src="{% static 'lib.js' %}"></script>
+    <script src="{% static 'app.js' %}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'lib.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'ranking.css' %}">
+</head>
+
+<body ng-controller="AppController">
+
+<div class="container-fluid">
+
+    <p>Took {{ took | floatformat:-6 }} seconds for query</p>
+    <div class="row">
+
+        <div class="col-sm-12 table">
+
+            <!-- Table header -->
+            <div class="row header">
+                <div class="col-xs-6">Votes</div>
+                <div class="col-xs-6">Total votes</div>
+            </div>
+
+            {% if latest_question_list %}
+                {% for question in latest_question_list %}
+                    <div class="row">
+                        <div class="col-xs-6"><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></div>
+                        <div class="col-xs-6">{{ question.total_votes }}</div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No polls are available.</p>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+coverage
+Django
+djangorestframework
+factory-boy
+mock
+coverage
+django-timer

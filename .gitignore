@@ -1,0 +1,19 @@
+# Python
+*.py[cod]
+
+# Installer logs
+pip-log.txt
+
+# Misc UNIX Files
+nohup.out
+venv/
+
+# Database
+db.sqlite3
+
+# Client-side
+npm-debug.log
+node_modules/
+
+# OSX stuff
+.DS_Store
