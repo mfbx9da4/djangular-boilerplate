@@ -1,13 +1,13 @@
-var App = angular.module('App', []);
+var PollsApp = angular.module('PollsApp', []);
 
-App.config(function($interpolateProvider, $httpProvider) {
-  $interpolateProvider.startSymbol('{[{');
-  $interpolateProvider.endSymbol('}]}');
+PollsApp.config(function($interpolateProvider, $httpProvider) {
+  $interpolateProvider.startSymbol('[{');
+  $interpolateProvider.endSymbol('}]');
   $httpProvider.defaults.xsrfCookieName = 'csrftoken';
   $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 });
 
-App.controller('AppController', function ($scope, $http) {
+PollsApp.controller('PollsController', function ($scope, $http) {
     $scope.items = [];
 
     $http({

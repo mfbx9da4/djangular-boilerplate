@@ -1,17 +1,17 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<html lang="en" ng-app="App">
+<html lang="en" ng-app="PollsApp">
 
 <head>
     <meta charset="UTF-8">
     <title>Poll</title>
 
     <script src="{% static 'lib.js' %}"></script>
-    <script src="{% static 'app.js' %}"></script>
+    <script src="{% static 'polls.js' %}"></script>
 
     <link rel="stylesheet" type="text/css" href="{% static 'lib.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'ranking.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'polls.css' %}">
 </head>
 
 <body ng-controller="AppController">
@@ -41,7 +41,17 @@
             {% endif %}
 
         </div>
+
     </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            {% verbatim %}
+                <pre> [{ items | json }] </pre>
+            {% endverbatim %}
+        </div>
+    </div>
+
 </div>
 </body>
 
