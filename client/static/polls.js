@@ -7,13 +7,24 @@ PollsApp.config(function($interpolateProvider, $httpProvider) {
   $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 });
 
-PollsApp.controller('PollsController', function ($scope, $http) {
+PollsApp.service('QuestionsService', ['$http', function ($http) {
+    var Service = {}
+
+    Service.list = function() {
+      return $http({
+          method: 'GET',
+          url: '/polls/questions/'
+      });
+    };
+
+    return Service;
+}]);
+
+PollsApp.controller('PollsController', function ($scope, $http, QuestionsService) {
     $scope.items = [];
 
-    $http({
-        method: 'GET',
-        url: '/polls/questions/'
-    }).then(success, error);
+
+    QuestionsService.list().then(success, error);
 
     function success(response) {
         console.log(response.data);
