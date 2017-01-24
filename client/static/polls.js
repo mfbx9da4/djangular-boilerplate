@@ -35,3 +35,27 @@ PollsApp.controller('PollsController', function ($scope, $http, QuestionsService
         console.log('Error retrieving items.');
     }
 });
+
+
+PollsApp.directive('stringUpdater', function () {
+    return {
+        restrict: 'EA',
+        scope: {
+          stringModel: '=?',
+        },
+        template: [
+          '<input type="text" ng-model="vm.stringModel" ng-keyup="vm.handleKeyUp($event)" />',
+          '<p>{{vm.stringModel}}</p>',
+        ].join(''),
+        controllerAs: 'vm',
+        controller: function () {
+          var vm = this;
+          vm.handleKeyUp = function ($event) {
+            if ($event.keyCode === 13) {
+              console.log(vm.stringModel);
+            }
+          }
+        },
+        link: function () {}
+    }
+});
